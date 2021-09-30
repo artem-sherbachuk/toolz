@@ -428,27 +428,8 @@
                 testingInfoLoading.appendChild(testInfo);
             }
         }
-        //Test fetch for the OEMs
-        var oemTest = document.createElement("div");
-        oemTest.id = "OEM";
-        oemTest.innerHTML = "<h3>" + icons["OEM"] +
-            "&nbsp;&nbsp; OEM </h3><h5> Optional test separated from final points</h5>";
-        testWrapper.appendChild(oemTest);
-        for (key in dataOEM) {
-            var div = document.createElement('div');
-            const dw = document.createElement('div');
-            div.classList.add("test");
-            div.id = key;
-            div.style.background = "var(--green)";
-            div.innerHTML = "<span onclick='show_info(this)'>" + icons[key] + "&nbsp;&nbsp;" + key + "</span>";
-            div.appendChild(dw);
-            oemTest.appendChild(div);
-            var value = dataOEM[key];
-            if (Array.isArray(value)) {
-                for (let i = 0; i < value.length; i++)
-                    fetches.push(check_url(value[i], dw, div, "np"));
-            } else fetches.push(check_url(value, dw, div, "np"));
-        }
+
+     
         let results = await Promise.all(fetches);
         return results; //do whatever you want with your results like converting them to json.
     }
